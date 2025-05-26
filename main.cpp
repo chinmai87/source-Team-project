@@ -1,5 +1,3 @@
-// changes by sudharshan
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -22,7 +20,7 @@ public:
 
 vector<Book> library;
 
-// Add a new book
+
 void addBook() {
     Book b;
     cout << "Enter book ID: ";
@@ -44,7 +42,7 @@ void addBook() {
     cout << "Book added successfully.\n";
 }
 
-// Display all books
+
 void displayBooks() {
     cout << "\nLibrary Books:\n";
     for (const auto& b : library) {
@@ -52,7 +50,7 @@ void displayBooks() {
     }
 }
 
-// Search book by ID
+
 void searchBook() {
     int id;
     cout << "Enter book ID to search: ";
@@ -68,10 +66,11 @@ void searchBook() {
     cout << "Book not found.\n";
 }
 
-// Search books by author name (Suhas's contribution)
+// Search books by author name
 void searchBooksByAuthor() {
     cout << "Enter author name to search: ";
     string authorName;
+    cin.ignore();
     getline(cin, authorName);
 
     bool found = false;
@@ -86,7 +85,7 @@ void searchBooksByAuthor() {
     }
 }
 
-// Issue a book
+
 void issueBook() {
     int id;
     cout << "Enter book ID to issue: ";
@@ -107,7 +106,7 @@ void issueBook() {
     cout << "Book not found.\n";
 }
 
-// Return a book
+
 void returnBook() {
     int id;
     cout << "Enter book ID to return: ";
@@ -128,7 +127,7 @@ void returnBook() {
     cout << "Book not found.\n";
 }
 
-// Shreyas's contribution: Display books sorted by publication year (descending)
+
 void displayBooksSortedByYearDesc() {
     if (library.empty()) {
         cout << "No books in the library.\n";
@@ -144,7 +143,7 @@ void displayBooksSortedByYearDesc() {
     }
 }
 
-// Prajwal’s contribution: Display count of issued and available books
+
 void displayIssuedAndAvailableCount() {
     int issuedCount = 0;
     int availableCount = 0;
@@ -158,7 +157,7 @@ void displayIssuedAndAvailableCount() {
     cout << "Total books available: " << availableCount << endl;
 }
 
-// Sudhrashan’s contribution: Delete a book by ID
+// Delete a book by ID
 void deleteBook() {
     int id;
     cout << "Enter book ID to delete: ";
@@ -187,7 +186,7 @@ void mainMenu() {
         cout << "6. Return Book\n";
         cout << "7. Display Books Sorted by Year (Descending)\n";  // Shreyas's contribution
         cout << "8. Display Issued and Available Book Count\n";  // Prajwal's contribution
-        cout << "9. Delete a Book\n";  // Sudhrashan's contribution
+        cout << "9. Delete a Book\n";  // Sudharshan's contribution
         cout << "10. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
