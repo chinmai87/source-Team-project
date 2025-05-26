@@ -1,5 +1,3 @@
-// changed by shreyas
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -68,6 +66,24 @@ void searchBook() {
     cout << "Book not found.\n";
 }
 
+// Search books by author name (Suhas's contribution)
+void searchBooksByAuthor() {
+    cout << "Enter author name to search: ";
+    string authorName;
+    getline(cin, authorName);
+
+    bool found = false;
+    for (const auto& b : library) {
+        if (b.author == authorName) {
+            b.display();
+            found = true;
+        }
+    }
+    if (!found) {
+        cout << "No books found by author: " << authorName << endl;
+    }
+}
+
 // Issue a book
 void issueBook() {
     int id;
@@ -133,10 +149,11 @@ void mainMenu() {
         cout << "1. Add Book\n";
         cout << "2. Display All Books\n";
         cout << "3. Search Book by ID\n";
-        cout << "4. Issue Book\n";
-        cout << "5. Return Book\n";
-        cout << "6. Display Books Sorted by Year (Descending)\n";  // Shreyas's contribution
-        cout << "7. Exit\n";
+        cout << "4. Search Books by Author\n";  // Suhas's contribution
+        cout << "5. Issue Book\n";
+        cout << "6. Return Book\n";
+        cout << "7. Display Books Sorted by Year (Descending)\n";  // Shreyas's contribution
+        cout << "8. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
         cin.ignore();
@@ -145,10 +162,11 @@ void mainMenu() {
             case 1: addBook(); break;
             case 2: displayBooks(); break;
             case 3: searchBook(); break;
-            case 4: issueBook(); break;
-            case 5: returnBook(); break;
-            case 6: displayBooksSortedByYearDesc(); break;
-            case 7: cout << "Exiting...\n"; return;
+            case 4: searchBooksByAuthor(); break;
+            case 5: issueBook(); break;
+            case 6: returnBook(); break;
+            case 7: displayBooksSortedByYearDesc(); break;
+            case 8: cout << "Exiting...\n"; return;
             default: cout << "Invalid choice! Try again.\n"; break;
         }
     }
