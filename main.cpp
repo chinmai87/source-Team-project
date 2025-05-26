@@ -70,6 +70,7 @@ void searchBook() {
 void searchBooksByAuthor() {
     cout << "Enter author name to search: ";
     string authorName;
+    cin.ignore();
     getline(cin, authorName);
 
     bool found = false;
@@ -105,7 +106,7 @@ void issueBook() {
     cout << "Book not found.\n";
 }
 
-// Return a book
+
 void returnBook() {
     int id;
     cout << "Enter book ID to return: ";
@@ -171,7 +172,6 @@ void mainMenu() {
         cout << "9. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
-        cin.ignore();
 
         switch (choice) {
             case 1: addBook(); break;
