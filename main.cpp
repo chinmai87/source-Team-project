@@ -70,6 +70,7 @@ void searchBook() {
 void searchBooksByAuthor() {
     cout << "Enter author name to search: ";
     string authorName;
+    cin.ignore();
     getline(cin, authorName);
 
     bool found = false;
@@ -105,7 +106,7 @@ void issueBook() {
     cout << "Book not found.\n";
 }
 
-// Return a book
+
 void returnBook() {
     int id;
     cout << "Enter book ID to return: ";
@@ -142,6 +143,20 @@ void displayBooksSortedByYearDesc() {
     }
 }
 
+// Prajwal’s contribution: Display count of issued and available books
+void displayIssuedAndAvailableCount() {
+    int issuedCount = 0;
+    int availableCount = 0;
+
+    for (const auto& b : library) {
+        if (b.isIssued) issuedCount++;
+        else availableCount++;
+    }
+
+    cout << "\nTotal books issued: " << issuedCount << endl;
+    cout << "Total books available: " << availableCount << endl;
+}
+
 void mainMenu() {
     int choice;
     while (true) {
@@ -153,10 +168,10 @@ void mainMenu() {
         cout << "5. Issue Book\n";
         cout << "6. Return Book\n";
         cout << "7. Display Books Sorted by Year (Descending)\n";  // Shreyas's contribution
-        cout << "8. Exit\n";
+        cout << "8. Display Issued and Available Book Count\n";  // Prajwal's contribution
+        cout << "9. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
-        cin.ignore();
 
         switch (choice) {
             case 1: addBook(); break;
@@ -166,7 +181,8 @@ void mainMenu() {
             case 5: issueBook(); break;
             case 6: returnBook(); break;
             case 7: displayBooksSortedByYearDesc(); break;
-            case 8: cout << "Exiting...\n"; return;
+            case 8: displayIssuedAndAvailableCount(); break;
+            case 9: cout << "Exiting...\n"; return;
             default: cout << "Invalid choice! Try again.\n"; break;
         }
     }
