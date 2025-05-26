@@ -20,7 +20,7 @@ public:
 
 vector<Book> library;
 
-// Add a new book
+
 void addBook() {
     Book b;
     cout << "Enter book ID: ";
@@ -42,7 +42,7 @@ void addBook() {
     cout << "Book added successfully.\n";
 }
 
-// Display all books
+
 void displayBooks() {
     cout << "\nLibrary Books:\n";
     for (const auto& b : library) {
@@ -50,7 +50,7 @@ void displayBooks() {
     }
 }
 
-// Search book by ID
+
 void searchBook() {
     int id;
     cout << "Enter book ID to search: ";
@@ -66,7 +66,7 @@ void searchBook() {
     cout << "Book not found.\n";
 }
 
-// Search books by author name (Suhas's contribution)
+// Search books by author name
 void searchBooksByAuthor() {
     cout << "Enter author name to search: ";
     string authorName;
@@ -85,7 +85,7 @@ void searchBooksByAuthor() {
     }
 }
 
-// Issue a book
+
 void issueBook() {
     int id;
     cout << "Enter book ID to issue: ";
@@ -127,7 +127,7 @@ void returnBook() {
     cout << "Book not found.\n";
 }
 
-// Shreyas's contribution: Display books sorted by publication year (descending)
+
 void displayBooksSortedByYearDesc() {
     if (library.empty()) {
         cout << "No books in the library.\n";
@@ -143,7 +143,7 @@ void displayBooksSortedByYearDesc() {
     }
 }
 
-// Prajwal’s contribution: Display count of issued and available books
+
 void displayIssuedAndAvailableCount() {
     int issuedCount = 0;
     int availableCount = 0;
@@ -155,6 +155,23 @@ void displayIssuedAndAvailableCount() {
 
     cout << "\nTotal books issued: " << issuedCount << endl;
     cout << "Total books available: " << availableCount << endl;
+}
+
+// Delete a book by ID
+void deleteBook() {
+    int id;
+    cout << "Enter book ID to delete: ";
+    cin >> id;
+    cin.ignore();
+
+    auto it = remove_if(library.begin(), library.end(),
+                        [id](const Book& b) { return b.id == id; });
+    if (it != library.end()) {
+        library.erase(it, library.end());
+        cout << "Book deleted successfully.\n";
+    } else {
+        cout << "Book not found.\n";
+    }
 }
 
 void mainMenu() {
@@ -169,9 +186,11 @@ void mainMenu() {
         cout << "6. Return Book\n";
         cout << "7. Display Books Sorted by Year (Descending)\n";  // Shreyas's contribution
         cout << "8. Display Issued and Available Book Count\n";  // Prajwal's contribution
-        cout << "9. Exit\n";
+        cout << "9. Delete a Book\n";  // Sudharshan's contribution
+        cout << "10. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
+        cin.ignore();
 
         switch (choice) {
             case 1: addBook(); break;
@@ -182,7 +201,8 @@ void mainMenu() {
             case 6: returnBook(); break;
             case 7: displayBooksSortedByYearDesc(); break;
             case 8: displayIssuedAndAvailableCount(); break;
-            case 9: cout << "Exiting...\n"; return;
+            case 9: deleteBook(); break;
+            case 10: cout << "Exiting...\n"; return;
             default: cout << "Invalid choice! Try again.\n"; break;
         }
     }
